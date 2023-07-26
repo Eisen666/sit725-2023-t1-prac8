@@ -1,0 +1,22 @@
+{
+  "name": "sit725-2023-t1-prac2",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Eisen666/sit725-2023-t1-prac2.git"
+  },
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
