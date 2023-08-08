@@ -1,31 +1,42 @@
-const cardList = [
-  {
-      title: "dog 2",
-      image: "dog2.jpg",
-      link: "About dog 2",
-      desciption: "Demo desciption about kitten 2"
-  },
-  {
-      title: "dog 3",
-      image: "dog3.jpg",
-      link: "About dog 3",
-      desciption: "This is a yellow cat"
-  }
-]
+
 
   const clickMe = () => {
     alert("Thanks for clicking me. Hope you have a lovely day!")
   }
 
-  const submitForm = () => {
+  const formSubmitted = () => {
     let formData = {};
-    formData.first_name = $('#first_name').val();
-    formData.last_name = $('#last_name').val();
-    formData.password = $('#password').val();
-    formData.email = $('#email').val();
+    formData.title = $('#title').val();
+    formData.subTitle = $('#subTitle').val();
+    formData.path = $('#path').val();
+    formData.description = $('#description').val();
 
-    console.log("Form Data Submitted: ", formData);
+    console.log(formData);
+    postDog(formData);
   } 
+
+  function postDog(dog){
+    $.ajax({
+      url:'/api/dog',
+      type:'POST',
+      data:dog,
+      success: (result)=>{
+        if (result,statusCode === 201) {
+          alert('dog post successful');
+          getAllDog();
+        }
+      }
+    });
+  }
+  
+  function getAllDog() {
+    $("#card-section").empty();
+    $.get('/api/dog', (result) => {
+        if (result.statusCode === 201) {
+            addCards(result.data);
+        }
+    })
+}
   
   const addCards = (items) => {
       items.forEach(item => {
@@ -43,9 +54,9 @@ const cardList = [
   
   $(document).ready(function(){
     $('.materialboxed').materialbox();
-    $('#clickMeButton').click(()=>{
-      submitForm();
+    $('#formSubmit').click(()=>{
+      formSubmitted();
    })
-    addCards(cardList);
     $('.modal').modal();
+    getAllDog();
   });
