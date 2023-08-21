@@ -59,4 +59,5 @@
    })
     $('.modal').modal();
     getAllDog();
+    console.log('ready');
   });
