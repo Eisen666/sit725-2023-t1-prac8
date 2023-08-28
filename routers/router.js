@@ -1,23 +1,9 @@
 let express = require('express');
 let router = express.Router();
+let controller = require('../controllers/controller');
 
-app.post('/', (req,res)=>{
-    //let dog = req.body;
-    //postDog(dog, (err, result)=> {
-        //if (err) {
-          //res.json({ statusCode: 500, message: 'server error' });
-        //} else {
-          //res.json({ statusCode: 200, data: result, message: 'success' });
-        //}
-    //})
-})
-
-app.get('/', function (req, res) {
-  //getAllDog((err, result) => {
-    //if (!err) {
-      //res.json({ statusCode: 200, data: result, message: 'success' })
-    //}
-  //});
-})
+router.post('/dog', controller.insertDog);
+router.get('/dog', controller.getAllDog);
+router.delete('/cat/:id', comtroller.deleteDog);
 
 module.exports = router;

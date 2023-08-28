@@ -19,4 +19,14 @@ const getAllDog =(req,res) => {
     });
 }
 
+const deleteDog = (req, res) => {
+  let id = req.params.id;
+  collection.deleteDog(id, (err, result) =>{
+    if (err) {
+      res.json({statusCode: 500, message: 'server error'});
+    } else {
+      res.json({statusCode: 200, data: result, message: 'success'});
+    }
+  })
+}
 module.exports = {postDog,getAllDog}

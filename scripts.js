@@ -32,7 +32,7 @@
   function getAllDog() {
     $("#card-section").empty();
     $.get('/api/dog', (result) => {
-        if (result.statusCode === 201) {
+        if (result.statusCode === 200) {
             addCards(result.data);
         }
     })
