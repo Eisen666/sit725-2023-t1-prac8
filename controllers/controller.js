@@ -13,8 +13,10 @@ const postDog = (req,res) => {
 
 const getAllDog =(req,res) => {
     collection.getAllDog((err,result)=>{
-        if (!err) {
-            res.json({ statusCode: 200, data: result, message: 'success' })
+        if (err) {
+            res.json({ statusCode: 500, data: result, message: 'server error'});
+          }else {
+            res.json({statusCode: 200, data: result, message: 'success'});
           }
     });
 }
@@ -29,4 +31,4 @@ const deleteDog = (req, res) => {
     }
   })
 }
-module.exports = {postDog,getAllDog}
+module.exports = {postDog,getAllDog, deleteDog};
